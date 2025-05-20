@@ -1,0 +1,1964 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Kosakata Bahasa Korea - Industri Tekstil</title>
+<style>
+    :root {
+      --primary-color: #3498db;
+      --secondary-color: #2ecc71;
+      --accent-color: #e74c3c;
+      --bg-color: #f0f8ff;
+      --card-bg: #ffffff;
+      --text-color: #333333;
+      --border-color: #bdc3c7;
+      --hover-color: #ecf0f1;
+      --correct-color: #2ecc71;
+      --incorrect-color: #e74c3c;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      padding: 12px;
+      margin: 0;
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    .container {
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 15px;
+      margin-bottom: 20px;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    h1 {
+      text-align: center;
+      color: var(--primary-color);
+      font-size: 1.5em;
+      margin-bottom: 15px;
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 8px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+      font-size: 0.95em;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    th, td {
+      border: 1px solid var(--border-color);
+      padding: 10px 6px;
+      text-align: center;
+      word-wrap: break-word;
+    }
+
+    th {
+      background-color: var(--primary-color);
+      color: white;
+      font-weight: 600;
+      font-size: 1em;
+    }
+
+    tr:nth-child(even) {
+      background-color: rgba(52, 152, 219, 0.05);
+    }
+
+    td.meaning, td.hangeul {
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 1em;
+      padding: 10px 6px;
+    }
+
+    td.meaning:hover, td.hangeul:hover {
+      background-color: rgba(52, 152, 219, 0.1);
+    }
+
+    .button {
+      background-color: var(--primary-color);
+      border: none;
+      padding: 12px 16px;
+      color: white;
+      font-size: 0.95em;
+      margin: 6px 3px;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      min-width: 100px;
+      touch-action: manipulation;
+    }
+
+    .button:hover {
+      background-color: #2980b9;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .button.secondary {
+      background-color: var(--secondary-color);
+    }
+
+    .button.secondary:hover {
+      background-color: #27ae60;
+    }
+
+    .button.accent {
+      background-color: var(--accent-color);
+    }
+
+    .button.accent:hover {
+      background-color: #c0392b;
+    }
+
+    .button:disabled {
+      background-color: #95a5a6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .controls {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 15px 0;
+    }
+
+    #timer {
+      font-weight: bold;
+      font-size: 24px;
+      color: var(--primary-color);
+      margin: 12px 0;
+      text-align: center;
+      display: block;
+    }
+    
+    .fixed-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 12px;
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      z-index: 100;
+    }
+
+    .mark-btn {
+      background-color: var(--accent-color);
+      border: none;
+      color: white;
+      cursor: pointer;
+      padding: 6px 10px;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+      font-size: 1.1em;
+      min-width: 36px;
+      min-height: 36px;
+    }
+
+    .mark-btn:hover {
+      background-color: #c0392b;
+    }
+
+    .marked {
+      background-color: rgba(231, 76, 60, 0.1) !important;
+    }
+
+    .progress-bar {
+      height: 8px;
+      background-color: #ecf0f1;
+      border-radius: 4px;
+      margin: 8px 0;
+      overflow: hidden;
+    }
+
+    .progress {
+      height: 100%;
+      background-color: var(--secondary-color);
+      width: 0%;
+      transition: width 0.5s ease;
+    }
+
+    .status {
+      text-align: center;
+      margin: 8px 0;
+      font-weight: bold;
+      color: var(--primary-color);
+    }
+
+    .mode-selector {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 15px 0;
+    }
+
+    .mode-selector label {
+      margin: 5px 12px;
+      cursor: pointer;
+      font-size: 1em;
+      display: flex;
+      align-items: center;
+    }
+
+    .mode-selector input[type="radio"] {
+      width: 16px;
+      height: 16px;
+      margin-right: 6px;
+    }
+
+    .card-view, .multiple-choice-view, .writing-view, .matching-view, .table-view {
+      display: none;
+    }
+
+    .card {
+      background-color: white;
+      padding: 30px 15px;
+      margin: 20px auto;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+      max-width: 100%;
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+    }
+
+    .card h2 {
+      font-size: 20px;
+      margin-bottom: 25px;
+    }
+
+    .card #cardFront {
+      font-size: 26px;
+      font-weight: bold;
+      margin-bottom: 25px;
+      color: var(--primary-color);
+    }
+
+    .card p {
+      font-size: 22px;
+      margin-top: 20px;
+      transition: opacity 0.3s ease;
+    }
+
+    .flip-btn {
+      position: absolute;
+      right: 15px;
+      bottom: 15px;
+      background-color: #f1c40f;
+      color: #333;
+      border: none;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      font-size: 22px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-mark-btn {
+      position: absolute;
+      left: 15px;
+      bottom: 15px;
+      background-color: var(--accent-color);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      font-size: 22px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .card-mark-btn.marked {
+      background-color: #c0392b;
+      transform: scale(1.1);
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .search-container {
+      margin: 15px 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    .search-input {
+      padding: 12px;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      width: 100%;
+      max-width: 100%;
+      font-size: 1em;
+    }
+
+    .progress-bar {
+      height: 12px;
+      background-color: #ecf0f1;
+      border-radius: 6px;
+      margin: 12px 0;
+      overflow: hidden;
+    }
+
+    .progress {
+      height: 100%;
+      background-color: var(--secondary-color);
+      width: 0%;
+      transition: width 0.5s ease;
+    }
+
+    .status {
+      text-align: center;
+      margin: 12px 0;
+      font-weight: bold;
+      color: var(--primary-color);
+      font-size: 1em;
+    }
+
+    .range-selector {
+      margin: 15px 0;
+      padding: 12px;
+      background-color: rgba(52, 152, 219, 0.1);
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .range-inputs {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .range-inputs input {
+      width: 80px;
+      padding: 8px;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      text-align: center;
+      font-size: 1em;
+    }
+
+    .range-inputs span {
+      font-weight: bold;
+      color: var(--text-color);
+    }
+
+    /* Multiple Choice Mode Styles */
+    .multiple-choice-container {
+      background-color: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+      margin: 20px auto;
+      max-width: 600px;
+    }
+
+    .question-word {
+      font-size: 28px;
+      font-weight: bold;
+      color: var(--primary-color);
+      margin-bottom: 20px;
+      padding: 15px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .choices {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .choice-btn {
+      background-color: white;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 15px;
+      text-align: left;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .choice-btn:hover {
+      background-color: var(--hover-color);
+    }
+
+    .choice-btn.correct {
+      background-color: var(--correct-color);
+      color: white;
+      font-weight: bold;
+    }
+
+    .choice-btn.incorrect {
+      background-color: var(--incorrect-color);
+      color: white;
+      text-decoration: line-through;
+    }
+
+    .feedback {
+      font-size: 18px;
+      font-weight: bold;
+      margin: 15px 0;
+      min-height: 27px;
+    }
+
+    .correct-feedback {
+      color: var(--correct-color);
+    }
+
+    .incorrect-feedback {
+      color: var(--incorrect-color);
+    }
+
+    /* Writing Mode Styles */
+    .writing-container {
+      background-color: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+      margin: 20px auto;
+      max-width: 600px;
+      border: 2px solid #4a4a8f;
+    }
+
+    .writing-word {
+      font-size: 28px;
+      font-weight: bold;
+      color: #4a4a8f;
+      margin-bottom: 20px;
+      padding: 15px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .writing-input {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #4a4a8f;
+      border-radius: 8px;
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+
+    .writing-input.correct {
+      background-color: #d4edda;
+      border-color: #c3e6cb;
+    }
+
+    .writing-input.incorrect {
+      background-color: #f8d7da;
+      border-color: #f5c6cb;
+    }
+
+    .writing-input.typo {
+      background-color: #fff3cd;
+      border-color: #ffeeba;
+    }
+
+    .writing-submit {
+      margin-top: 10px;
+      background-color: #4a4a8f;
+      padding: 10px 20px;
+      color: white;
+      font-size: 18px;
+      border: none;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    .writing-submit:hover {
+      background-color: #5a5aa0;
+    }
+
+    .writing-answer {
+      margin-top: 15px;
+      padding: 15px;
+      background-color: rgba(74, 74, 143, 0.05);
+      border-radius: 8px;
+      font-size: 16px;
+      display: none;
+    }
+    
+    .feedback {
+      font-weight: bold;
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    
+    .correct-feedback {
+      background-color: #d4edda;
+      color: #155724;
+      border: 2px solid #c3e6cb;
+    }
+    
+    .incorrect-feedback {
+      background-color: #f8d7da;
+      color: #721c24;
+      border: 2px solid #f5c6cb;
+    }
+    
+    .typo-feedback {
+      background-color: #fff3cd;
+      color: #856404;
+      border: 2px solid #ffeeba;
+    }
+    
+    .question-number {
+      font-size: 16px;
+      color: #4a4a8f;
+      margin-bottom: 15px;
+    }
+
+    /* Matching Mode Styles */
+    .matching-container {
+      background-color: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+      margin: 20px auto;
+      max-width: 800px;
+    }
+
+    .matching-items {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .matching-column {
+      flex: 1;
+      min-width: 45%;
+      padding: 10px;
+    }
+
+    .matching-item {
+      padding: 12px;
+      margin: 8px 0;
+      background-color: white;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      cursor: grab;
+      user-select: none;
+      transition: all 0.2s ease;
+    }
+
+    .matching-item:hover {
+      background-color: var(--hover-color);
+    }
+
+    .matching-item.selected {
+      background-color: rgba(52, 152, 219, 0.2);
+      border: 2px solid var(--primary-color);
+    }
+
+    .matching-item.correct {
+      background-color: rgba(46, 204, 113, 0.2);
+      border: 2px solid var(--correct-color);
+    }
+
+    .matching-dropzone {
+      min-height: 60px;
+      border: 2px dashed var(--border-color);
+      border-radius: 8px;
+      margin: 8px 0;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .matching-dropzone.hover {
+      background-color: rgba(52, 152, 219, 0.1);
+      border-color: var(--primary-color);
+    }
+
+    .matching-dropzone.filled {
+      border-style: solid;
+    }
+
+    .matching-score {
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+      margin: 15px 0;
+      color: var(--primary-color);
+    }
+
+    /* Home Screen Styles */
+    .home-screen {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .mode-card {
+      background-color: white;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 15px auto;
+      max-width: 500px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .mode-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .mode-card h2 {
+      color: var(--primary-color);
+      margin-bottom: 10px;
+    }
+
+    .mode-card p {
+      color: var(--text-color);
+      font-size: 0.9em;
+      margin-bottom: 0;
+    }
+
+    .back-button {
+      background-color: var(--accent-color);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1em;
+      margin-top: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .back-button:hover {
+      background-color: #c0392b;
+    }
+
+    .final-score {
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+      margin: 20px 0;
+      padding: 15px;
+      background-color: rgba(46, 204, 113, 0.1);
+      border-radius: 8px;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 6px;
+      }
+      
+      h1 {
+        font-size: 1.3em;
+      }
+      
+      .button {
+        min-width: 90px;
+        font-size: 0.9em;
+        padding: 10px 12px;
+      }
+      
+      .card {
+        padding: 25px 12px;
+      }
+      
+      #cardStatus {
+        font-size: 1em;
+      }
+
+      .matching-items {
+        flex-direction: column;
+      }
+      
+      .matching-column {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+<h1>Kosakata Bahasa Korea - BAB 60</h1>
+<!-- Home Screen / Mode Selection -->
+
+<div style="text-align: right; margin-bottom: 10px;">
+  <button class="button" id="toggleRangeBtn" onclick="toggleRangeSelector()">Sembunyikan Rentang</button>
+</div>
+<div class="range-selector" id="rangeSelector">
+<h3>Pilih Rentang Kosakata</h3>
+<div class="range-inputs">
+<input id="startRange" max="75" min="1" type="number" value="1"/>
+<span>sampai</span>
+<input id="endRange" max="75" min="1" type="number" value="75"/>
+<button class="button secondary" onclick="applyRange()">Terapkan</button>
+</div>
+</div><div class="home-screen" id="homeScreen">
+<div class="mode-card" onclick="startMode('table')">
+<h2>Tampilan Tabel</h2>
+<p>Pelajari semua kosakata dalam format tabel</p>
+</div>
+<div class="mode-card" onclick="startMode('card')">
+<h2>Kartu Flash</h2>
+<p>Pelajari kosakata dengan sistem kartu flash</p>
+</div>
+<div class="mode-card" onclick="startMode('multiple-choice')">
+<h2>Pilihan Ganda</h2>
+<p>Uji pengetahuan Anda dengan kuis pilihan ganda</p>
+</div>
+<div class="mode-card" onclick="startMode('writing')">
+<h2>Mode Menulis</h2>
+<p>Praktikkan menerjemahkan kata-kata Korea</p>
+</div>
+<div class="mode-card" onclick="startMode('matching')">
+<h2>Mode Mencocokkan</h2>
+<p>Cocokkan kata-kata Korea dengan artinya</p>
+</div>
+<!-- Range selector -->
+</div><div class="controls" id="tableCardControls" style="display:none"><div class="search-container"><input class="search-input" id="searchInput" oninput="searchVocab()" placeholder="Cari kata..." type="text"/></div><div class="controls"><button class="button secondary" onclick="shuffleTable()">Acak Kata</button><button class="button accent" onclick="reviewMarked()">Ulangi Kata Ditandai</button></div></div>
+<!-- Table View -->
+<div class="table-view" id="tableView">
+<div class="controls"><button class="button secondary" onclick="shuffleTable()">Acak Kata</button><button class="button accent" onclick="reviewMarked()">Ulangi Kata Ditandai</button></div><button class="back-button" onclick="backToHome()">← Kembali</button>
+<div class="controls">
+<button class="button" onclick="startQuiz()">Mulai Kuis</button>
+</div>
+<div id="timer">00:00</div>
+<div class="progress-bar">
+<div class="progress" id="progressBar"></div>
+</div>
+<div class="status" id="statusText">Siap untuk belajar</div>
+<table id="vocabTable">
+<thead>
+<tr>
+<th>No</th>
+<th>Hangeul</th>
+<th>Arti</th>
+<th>✱</th>
+</tr>
+</thead>
+<tbody id="tableBody"></tbody>
+</table>
+</div>
+<!-- Card View -->
+<div class="card-view" id="cardView">
+<div class="controls"><button class="button secondary" onclick="shuffleTable()">Acak Kata</button><button class="button accent" onclick="reviewMarked()">Ulangi Kata Ditandai</button></div><button class="back-button" onclick="backToHome()">← Kembali</button>
+<div class="progress-bar">
+<div class="progress" id="cardProgressBar"></div>
+</div>
+<div class="card" style="text-align: center;">
+  <h2>Kata Korea</h2>
+  <div id="cardFront"></div>
+  <p id="cardBack" style="opacity: 0;"></p>
+  <button class="flip-btn" onclick="flipCard()">↺</button>
+  <button class="card-mark-btn" id="cardMarkBtn" onclick="toggleCardMark()">✱</button>
+</div>
+<div class="navigation">
+<button class="button" onclick="prevCard()">← Sebelumnya</button>
+<button class="button secondary" onclick="flipCard()">Balik Kartu</button>
+<button class="button" onclick="nextCard()">Berikutnya →</button>
+</div>
+<div class="status" id="cardStatus">Kartu 1 dari 75</div>
+</div>
+<!-- Multiple Choice Mode -->
+<div class="multiple-choice-view" id="multipleChoiceView">
+<button class="back-button" onclick="backToHome()">← Kembali</button>
+<div class="progress-bar">
+<div class="progress" id="mcProgressBar"></div>
+</div>
+<div class="final-score" id="mcScoreDisplay" style="display: none;">
+        Skor Akhir: <span id="mcFinalScore">0/0</span>
+</div>
+<div class="multiple-choice-container" style="text-align: center;"> 
+<div class="question-word" id="mcQuestion"></div>
+<div class="choices" id="mcChoices"></div>
+<div class="feedback" id="mcFeedback"></div>
+<div class="navigation">
+<button class="button secondary" disabled="" id="mcNextBtn" onclick="mcNextQuestion()">Berikutnya →</button>
+</div>
+<div class="status" id="mcStatus">Soal 1 dari 75</div>
+</div>
+</div>
+<!-- Writing Mode -->
+<div class="writing-view" id="writingView">
+<button class="back-button" onclick="backToHome()">← Kembali</button>
+<div class="progress-bar">
+<div class="progress" id="writingProgressBar"></div>
+</div>
+<div class="final-score" id="writingScoreDisplay" style="display: none;">
+        Skor Akhir: <span id="writingFinalScore">0/0</span>
+</div>
+<div class="writing-container">
+<p class="question-number" id="writingQuestionNumber">Pertanyaan 1 dari 10</p>
+<p>Apa arti dari "<span class="writing-word" id="writingQuestion"></span>" dalam bahasa Indonesia?</p>
+<div class="input-container">
+<input class="writing-input" id="writingInput" placeholder="Tuliskan jawaban Anda" type="text"/>
+<button class="writing-submit" id="writingSubmit" onclick="checkWritingAnswer()">Selanjutnya</button>
+</div>
+<div class="feedback" id="writingFeedback"></div>
+<div class="writing-answer" id="writingAnswer"></div>
+<div class="status" id="writingStatus">Soal 1 dari 75</div>
+</div>
+<div class="navigation" style="text-align:center"><button class="button accent" onclick="repeatWrongAnswers()">↻ Ulangi Kata Salah</button></div></div>
+<!-- Matching Mode -->
+<div class="matching-view" id="matchingView">
+<button class="back-button" onclick="backToHome()">← Kembali</button>
+<div class="final-score" id="matchingScoreDisplay" style="display: none;">
+        Anda berhasil mencocokkan semua kata!
+      </div>
+<div class="matching-container">
+<h2>Mencocokkan Kata dengan Artinya</h2>
+<div class="matching-score" id="matchingScore">Cocokkan: 0/5</div>
+<div class="matching-items">
+<div class="matching-column">
+<h3>Kata Korea</h3>
+<div id="koreanItems"></div>
+</div>
+<div class="matching-column">
+<h3>Arti</h3>
+<div id="meaningItems"></div>
+</div>
+</div>
+<div class="navigation">
+<button class="button secondary" onclick="resetMatching()">Mulai Ulang</button>
+<button class="button" onclick="loadNewMatchingSet()">Set Baru</button>
+</div>
+</div>
+</div>
+</div>
+<script>
+    const vocabList = [
+      ["근로자", "Pekerja"],
+      ["보험", "Asuransi"],
+      ["보험금", "Uang asuransi"],
+      ["가입하다", "Bergabung"],
+      ["납입하다", "Membayar"],
+      ["청구하다", "Mengklaim"],
+      ["심사", "Pemeriksaan"],
+      ["휴업 급여", "Gaji cuti"],
+      ["장해 보상금", "Kompensasi cacat"],
+      ["사회보험", "Asuransi sosial utama"],
+      ["국민연금", "Pensiun nasional"],
+      ["건강보험", "Asuransi kesehatan"],
+      ["고용보험", "Asuransi kerja"],
+      ["산재보험", "Asuransi kecelakaan industri"],
+      ["입증", "Bukti"],
+      ["의료비", "Biaya pengobatan"],
+      ["누구나", "Siapapun"],
+      ["혜택", "Benefit, keuntungan"],
+      ["병원비", "Biaya rumah sakit"],
+      ["사업주", "Pemilik bisnis"],
+      ["체하다", "Berpura-pura"],
+      ["입원하다", "Opname/dirawat di rumah sakit"],
+      ["깻잎", "Daun wijen"],
+      ["나뭇잎", "Daun"],
+      ["베갯잇", "Sarung bantal"],
+      ["전용", "Khusus"],
+      ["질병", "Terserang penyakit"],
+      ["상해", "Luka"],
+      ["장해", "Cacat"],
+      ["사망", "Meninggal dunia"],
+      ["재해", "Bencana"],
+      ["체불 임금", "Gaji yang belum dibayar"],
+      ["퇴직금", "Uang pesangon"],
+      ["벌금", "Denda"],
+      ["출국만기보험", "Asuransi jaminan keberangkatan"],
+      ["귀국비용보험", "Asuransi biaya kepulangan"],
+      ["임금체불보증보험", "Asuransi jaminan tunggakan gaji"],
+      ["상해보험", "Asuransi kecelakaan di luar tempat kerja"],
+      ["일시금", "Jumlah bulat"],
+      ["진단서", "Rekam medis"],
+      ["보험 약정", "Perjanjian asuransi"],
+      ["부담없이", "Tanpa tekanan"],
+      ["사고 입증 서류", "Dokumen bukti kecelakaan"],
+      ["출국예정사실확인서", "Konfirmasi jadwal keberangkatan"],
+      ["예전", "Yang lalu"],
+      ["노령", "Lansia"],
+      ["부상", "Luka, cedera"],
+      ["실업", "Pengangguran"],
+      ["종류", "Jenis"],
+      ["목적", "Tujuan"],
+      ["가입 주체", "Penyelesaian pendaftaran"],
+      ["소득", "Pendapatan"],
+      ["보장", "Jaminan"],
+      ["최소하다", "Minimal"],
+      ["지원", "Membantu"],
+      ["실직", "Pengangguran"],
+      ["기존", "Keberadaan"],
+      ["미지급하다", "Menunggak"],
+      ["비용", "Biaya"],
+      ["충당", "Pemenuhan"],
+      ["업무상", "Kerja"],
+      ["손", "Tangan"],
+      ["벼", "Padi"],
+      ["밀리다", "Menumpuk, tertunda"],
+      ["직접", "Secara langsung"],
+      ["요청하다", "Meminta"],
+      ["대답하다", "Menjawab"],
+      ["묻다", "Bertanya"],
+      ["대해", "Tentang"],
+      ["구내식당", "Kafetaria/kantin"]
+    ];
+
+    let interval, seconds = 0;
+    let showIndex = 0;
+    let started = false;
+    let meaningCells = [], rowRefs = [];
+    let markedRows = new Set();
+    let currentCardIndex = 0;
+    let cardFlipped = false;
+    let originalList = [...vocabList];
+    let filteredList = [...vocabList];
+    let currentView = 'home';
+
+    // Multiple Choice Variables
+    let mcCurrentIndex = 0;
+    let mcAnswered = false;
+    let mcCorrectIndex = 0;
+    let mcTotalCorrect = 0;
+    let mcTotalAnswered = 0;
+
+    // Writing Mode Variables
+    let writingCurrentIndex = 0;
+    let writingAnswered = false;
+    let writingTotalCorrect = 0;
+    let writingTotalAnswered = 0;
+
+    // Matching Mode Variables
+    let matchingPairs = [];
+    let matchingSelected = null;
+    let matchingCorrect = 0;
+    let matchingTotal = 5; // Number of pairs to match at once
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', function() {
+      // Set max for range inputs
+      document.getElementById('startRange').max = vocabList.length;
+      document.getElementById('endRange').max = vocabList.length;
+      document.getElementById('endRange').value = vocabList.length;
+      
+      renderTable(vocabList);
+      updateCardView();
+      initMultipleChoice();
+      initWritingMode();
+      initMatchingMode();
+      
+      // Add event listener for writing input
+      document.getElementById('writingInput').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          checkWritingAnswer();
+        }
+      });
+    });
+
+    // Navigation Functions
+    function startMode(mode) {
+      currentView = mode;
+      
+      // Hide home screen
+      document.getElementById('homeScreen').style.display = 'none';
+      
+      // Hide all mode views
+      document.getElementById('tableView').style.display = 'none';
+      document.getElementById('cardView').style.display = 'none';
+      document.getElementById('multipleChoiceView').style.display = 'none';
+      document.getElementById('writingView').style.display = 'none';
+      document.getElementById('matchingView').style.display = 'none';
+      
+      // Show selected mode
+      switch(mode) {
+        case 'table':
+          document.getElementById('tableView').style.display = 'block';
+          break;
+        case 'card':
+          document.getElementById('cardView').style.display = 'block';
+          updateCardView();
+          updateCardProgress();
+          break;
+        case 'multiple-choice':
+          document.getElementById('multipleChoiceView').style.display = 'block';
+          resetMultipleChoice();
+          break;
+        case 'writing':
+          document.getElementById('writingView').style.display = 'block';
+          resetWritingMode();
+          break;
+        case 'matching':
+          document.getElementById('matchingView').style.display = 'block';
+          loadNewMatchingSet();
+          break;
+      }
+    }
+
+    function backToHome() {
+      // Reset any ongoing activities
+      if (started) {
+        resetQuiz();
+      }
+      
+      // Hide score displays
+      document.getElementById('mcScoreDisplay').style.display = 'none';
+      document.getElementById('writingScoreDisplay').style.display = 'none';
+      document.getElementById('matchingScoreDisplay').style.display = 'none';
+      
+      // Reset current view
+      currentView = 'home';
+      
+      // Hide all mode views
+      document.getElementById('tableView').style.display = 'none';
+      document.getElementById('cardView').style.display = 'none';
+      document.getElementById('multipleChoiceView').style.display = 'none';
+      document.getElementById('writingView').style.display = 'none';
+      document.getElementById('matchingView').style.display = 'none';
+      
+      // Show home screen
+      document.getElementById('homeScreen').style.display = 'block';
+    }
+
+    // Multiple Choice Functions
+    function initMultipleChoice() {
+      mcCurrentIndex = 0;
+      mcAnswered = false;
+      updateMultipleChoiceView();
+    }
+
+    function resetMultipleChoice() {
+      mcCurrentIndex = 0;
+      mcAnswered = false;
+      mcTotalCorrect = 0;
+      mcTotalAnswered = 0;
+      document.getElementById('mcScoreDisplay').style.display = 'none';
+      updateMultipleChoiceView();
+      updateMCProgress();
+    }
+
+    function updateMultipleChoiceView() {
+      if (filteredList.length === 0) return;
+
+      const questionEl = document.getElementById('mcQuestion');
+      const choicesEl = document.getElementById('mcChoices');
+      const feedbackEl = document.getElementById('mcFeedback');
+      const statusEl = document.getElementById('mcStatus');
+      const nextBtn = document.getElementById('mcNextBtn');
+
+      // Reset view
+      questionEl.textContent = filteredList[mcCurrentIndex][0];
+      choicesEl.innerHTML = '';
+      feedbackEl.textContent = '';
+      feedbackEl.className = 'feedback';
+      nextBtn.disabled = !mcAnswered;
+
+      // Update status
+      statusEl.textContent = `Soal ${mcCurrentIndex + 1} dari ${filteredList.length}`;
+
+      // Generate choices (1 correct + 3 wrong)
+      const correctAnswer = filteredList[mcCurrentIndex][1];
+      let choices = [correctAnswer];
+      mcCorrectIndex = Math.floor(Math.random() * 4); // Random position for correct answer
+
+      // Get random wrong answers
+      while (choices.length < 4) {
+        const randomIndex = Math.floor(Math.random() * filteredList.length);
+        const randomAnswer = filteredList[randomIndex][1];
+        if (randomAnswer !== correctAnswer && !choices.includes(randomAnswer)) {
+          choices.push(randomAnswer);
+        }
+      }
+
+      // Rearrange to put correct answer at the random position
+      const orderedChoices = [];
+      for (let i = 0; i < 4; i++) {
+        if (i === mcCorrectIndex) {
+          orderedChoices.push(correctAnswer);
+        } else {
+          const wrongAnswer = choices.find(choice => choice !== correctAnswer && !orderedChoices.includes(choice));
+          orderedChoices.push(wrongAnswer);
+        }
+      }
+
+      // Create choice buttons
+      orderedChoices.forEach((choice, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'choice-btn';
+        btn.textContent = choice;
+        btn.onclick = function() {
+          if (mcAnswered) return;
+          mcAnswered = true;
+          mcTotalAnswered++;
+          
+          if (idx === mcCorrectIndex) {
+            mcTotalCorrect++;
+            btn.classList.add('correct');
+            feedbackEl.textContent = 'Benar!';
+            feedbackEl.classList.add('correct-feedback');
+          } else {
+            btn.classList.add('incorrect');
+            const correctBtn = choicesEl.children[mcCorrectIndex];
+            correctBtn.classList.add('correct');
+            feedbackEl.textContent = `Jawaban yang benar: ${correctAnswer}`;
+            feedbackEl.classList.add('incorrect-feedback');
+          }
+          
+          nextBtn.disabled = false;
+          updateMCProgress();
+          
+          // Auto-advance after delay if not the last question
+          if (mcCurrentIndex < filteredList.length - 1) {
+            setTimeout(() => {
+              if (!nextBtn.disabled) {
+                mcNextQuestion();
+              }
+            }, 1500);
+          } else {
+            // Show final score
+            showMCFinalScore();
+          }
+        };
+        choicesEl.appendChild(btn);
+      });
+    }
+
+    function updateMCProgress() {
+      const progress = ((mcCurrentIndex + (mcAnswered ? 1 : 0)) / filteredList.length) * 100;
+      document.getElementById('mcProgressBar').style.width = `${progress}%`;
+    }
+
+    function showMCFinalScore() {
+      const scoreDisplay = document.getElementById('mcScoreDisplay');
+      const finalScoreEl = document.getElementById('mcFinalScore');
+      
+      finalScoreEl.textContent = `${mcTotalCorrect}/${mcTotalAnswered}`;
+      scoreDisplay.style.display = 'block';
+    }
+
+    function mcNextQuestion() {
+      if (mcCurrentIndex < filteredList.length - 1) {
+        mcCurrentIndex++;
+        mcAnswered = false;
+        updateMultipleChoiceView();
+        updateMCProgress();
+      } else {
+        // Show final score
+        showMCFinalScore();
+      }
+    }
+
+    // Writing Mode Functions
+    function initWritingMode() {
+      writingCurrentIndex = 0;
+      writingAnswered = false;
+      updateWritingView();
+    }
+
+    function resetWritingMode() {
+      writingCurrentIndex = 0;
+      writingAnswered = false;
+      writingTotalCorrect = 0;
+      writingTotalAnswered = 0;
+      document.getElementById('writingScoreDisplay').style.display = 'none';
+      updateWritingView();
+      updateWritingProgress();
+    }
+
+    function updateWritingView() {
+      if (filteredList.length === 0) return;
+
+      const questionEl = document.getElementById('writingQuestion');
+      const inputEl = document.getElementById('writingInput');
+      const answerEl = document.getElementById('writingAnswer');
+      const feedbackEl = document.getElementById('writingFeedback');
+      const statusEl = document.getElementById('writingStatus');
+      const questionNumberEl = document.getElementById('writingQuestionNumber');
+
+      // Reset view
+      questionEl.textContent = filteredList[writingCurrentIndex][0];
+      inputEl.value = '';
+      inputEl.className = 'writing-input';
+      inputEl.disabled = false;
+      answerEl.style.display = 'none';
+      feedbackEl.textContent = '';
+      feedbackEl.className = 'feedback';
+
+      // Update status and question number
+      statusEl.textContent = `Soal ${writingCurrentIndex + 1} dari ${filteredList.length}`;
+      questionNumberEl.textContent = `Pertanyaan ${writingCurrentIndex + 1} dari ${filteredList.length}`;
+      
+      // Set focus on input field
+      setTimeout(() => {
+        inputEl.focus();
+      }, 100);
+    }
+
+    function updateWritingProgress() {
+      const progress = ((writingCurrentIndex + (writingAnswered ? 1 : 0)) / filteredList.length) * 100;
+      document.getElementById('writingProgressBar').style.width = `${progress}%`;
+    }
+
+    function showWritingFinalScore() {
+      const scoreDisplay = document.getElementById('writingScoreDisplay');
+      const finalScoreEl = document.getElementById('writingFinalScore');
+      
+      finalScoreEl.textContent = `${writingTotalCorrect}/${writingTotalAnswered}`;
+      scoreDisplay.style.display = 'block';
+    }
+
+    function checkWritingAnswer() {
+      if (writingAnswered) return;
+
+      const inputEl = document.getElementById('writingInput');
+      const answerEl = document.getElementById('writingAnswer');
+      const feedbackEl = document.getElementById('writingFeedback');
+      const correctAnswer = filteredList[writingCurrentIndex][1];
+      const userAnswer = inputEl.value.trim().toLowerCase();
+
+      writingAnswered = true;
+      writingTotalAnswered++;
+      inputEl.disabled = true;
+      answerEl.style.display = 'block';
+      updateWritingProgress();
+
+      // Check for exact match
+      if (userAnswer === correctAnswer.toLowerCase()) {
+        writingTotalCorrect++;
+        inputEl.classList.add('correct');
+        feedbackEl.textContent = 'Jawaban benar!';
+        feedbackEl.className = 'feedback correct-feedback';
+        answerEl.textContent = `Jawaban benar: ${correctAnswer}`;
+      } 
+      // Check for close match (simulating typo detection)
+      else if (isCloseMatch(userAnswer, correctAnswer.toLowerCase())) {
+        writingTotalCorrect += 0.5; // Half point for close answers
+        inputEl.classList.add('typo');
+        feedbackEl.textContent = `Jawaban hampir benar (typo)! Jawaban yang benar adalah "${correctAnswer}".`;
+        feedbackEl.className = 'feedback typo-feedback';
+        answerEl.textContent = `Jawaban benar: ${correctAnswer}`;
+      } 
+      // Wrong answer
+      else {
+        inputEl.classList.add('incorrect');
+        feedbackEl.textContent = 'Jawaban salah!';
+        feedbackEl.className = 'feedback incorrect-feedback';
+        answerEl.textContent = `Jawaban benar: ${correctAnswer}`;
+      }
+
+      // Auto-advance to next question after delay
+      if (writingCurrentIndex < filteredList.length - 1) {
+        setTimeout(() => {
+          writingNextQuestion();
+        }, 2000);
+      } else {
+        // Show final score
+        setTimeout(() => {
+          showWritingFinalScore();
+        }, 1500);
+      }
+    }
+
+    // Helper function to check if answers are close (simulates typo detection)
+    function isCloseMatch(userAnswer, correctAnswer) {
+      if (userAnswer.length < 3) return false;
+      
+      let matchCount = 0;
+      const tolerance = Math.max(2, Math.floor(correctAnswer.length * 0.2)); // 20% tolerance or at least 2 chars
+      
+      // Simple algorithm: if more than 80% of characters match position, it's close enough
+      for (let i = 0; i < Math.min(userAnswer.length, correctAnswer.length); i++) {
+        if (userAnswer[i] === correctAnswer[i]) {
+          matchCount++;
+        }
+      }
+      
+      const lengthDifference = Math.abs(userAnswer.length - correctAnswer.length);
+      return lengthDifference <= tolerance && 
+             matchCount >= correctAnswer.length - tolerance;
+    }
+
+    function writingNextQuestion() {
+      if (writingCurrentIndex < filteredList.length - 1) {
+        writingCurrentIndex++;
+        writingAnswered = false;
+        updateWritingView();
+        updateWritingProgress();
+      } else {
+        // Show final score
+        showWritingFinalScore();
+      }
+    }
+
+    // Matching Mode Functions
+    function initMatchingMode() {
+      loadNewMatchingSet();
+    }
+
+    function loadNewMatchingSet() {
+      // Reset matching state
+      matchingCorrect = 0;
+      matchingSelected = null;
+      matchingPairs = [];
+      
+      // Hide completion message
+      document.getElementById('matchingScoreDisplay').style.display = 'none';
+      
+      // Get random subset of vocabulary for matching
+      let availableIndices = [...Array(filteredList.length).keys()];
+      let selectedIndices = [];
+      
+      // Select random items
+      for (let i = 0; i < Math.min(matchingTotal, filteredList.length); i++) {
+        if (availableIndices.length === 0) break;
+        
+        const randomIndex = Math.floor(Math.random() * availableIndices.length);
+        const vocabIndex = availableIndices.splice(randomIndex, 1)[0];
+        selectedIndices.push(vocabIndex);
+        
+        matchingPairs.push({
+          korean: filteredList[vocabIndex][0],
+          meaning: filteredList[vocabIndex][1],
+          matched: false
+        });
+      }
+      
+      updateMatchingView();
+    }
+
+    function updateMatchingView() {
+      const koreanItemsEl = document.getElementById('koreanItems');
+      const meaningItemsEl = document.getElementById('meaningItems');
+      const scoreEl = document.getElementById('matchingScore');
+      
+      koreanItemsEl.innerHTML = '';
+      meaningItemsEl.innerHTML = '';
+      
+      // Shuffle the pairs for display
+      const shuffledKorean = [...matchingPairs].sort(() => Math.random() - 0.5);
+      const shuffledMeaning = [...matchingPairs].sort(() => Math.random() - 0.5);
+      
+      // Create Korean items
+      shuffledKorean.forEach((pair, index) => {
+        const itemEl = document.createElement('div');
+        itemEl.className = pair.matched ? 'matching-item correct' : 'matching-item';
+        itemEl.textContent = pair.korean;
+        itemEl.dataset.index = index;
+        itemEl.dataset.type = 'korean';
+        itemEl.dataset.value = pair.korean;
+        
+        if (!pair.matched) {
+          itemEl.addEventListener('click', selectMatchingItem);
+        }
+        
+        koreanItemsEl.appendChild(itemEl);
+      });
+      
+      // Create meaning items
+      shuffledMeaning.forEach((pair, index) => {
+        const itemEl = document.createElement('div');
+        itemEl.className = pair.matched ? 'matching-item correct' : 'matching-item';
+        itemEl.textContent = pair.meaning;
+        itemEl.dataset.index = index;
+        itemEl.dataset.type = 'meaning';
+        itemEl.dataset.value = pair.meaning;
+        
+        if (!pair.matched) {
+          itemEl.addEventListener('click', selectMatchingItem);
+        }
+        
+        meaningItemsEl.appendChild(itemEl);
+      });
+      
+      // Update score
+      scoreEl.textContent = `Cocokkan: ${matchingCorrect}/${matchingPairs.length}`;
+      
+      // Check if all matched
+      if (matchingCorrect === matchingPairs.length && matchingPairs.length > 0) {
+        // Show completion message
+        document.getElementById('matchingScoreDisplay').style.display = 'block';
+      }
+    }
+
+    function selectMatchingItem(event) {
+      const item = event.currentTarget;
+      const type = item.dataset.type;
+      const value = item.dataset.value;
+      
+      // If no item is selected or clicking the same item, toggle selection
+      if (!matchingSelected || (matchingSelected.type === type && matchingSelected.value === value)) {
+        if (matchingSelected) {
+          // Deselect the current item
+          document.querySelectorAll('.matching-item.selected').forEach(el => {
+            el.classList.remove('selected');
+          });
+          matchingSelected = null;
+        } else {
+          // Select this item
+          item.classList.add('selected');
+          matchingSelected = { type, value };
+        }
+        return;
+      }
+      
+      // If an item of the other type is already selected, check for a match
+      if (matchingSelected.type !== type) {
+        let isMatch = false;
+        
+        // Find the pair that matches both selected items
+        for (let pair of matchingPairs) {
+          if ((matchingSelected.type === 'korean' && matchingSelected.value === pair.korean && value === pair.meaning) ||
+              (matchingSelected.type === 'meaning' && matchingSelected.value === pair.meaning && value === pair.korean)) {
+            isMatch = true;
+            pair.matched = true;
+            matchingCorrect++;
+            break;
+          }
+        }
+        
+        // Mark the items as correct or deselect
+        if (isMatch) {
+          document.querySelectorAll('.matching-item.selected').forEach(el => {
+            el.classList.remove('selected');
+            el.classList.add('correct');
+            // Remove event listeners
+            el.removeEventListener('click', selectMatchingItem);
+          });
+          item.classList.add('correct');
+          item.removeEventListener('click', selectMatchingItem);
+        } else {
+          document.querySelectorAll('.matching-item.selected').forEach(el => {
+            el.classList.remove('selected');
+          });
+        }
+        
+        matchingSelected = null;
+        updateMatchingView();
+      }
+    }
+
+    function resetMatching() {
+      matchingPairs.forEach(pair => {
+        pair.matched = false;
+      });
+      matchingCorrect = 0;
+      matchingSelected = null;
+      document.getElementById('matchingScoreDisplay').style.display = 'none';
+      updateMatchingView();
+    }
+
+    // Fungsi untuk menerapkan rentang yang dipilih
+    function applyRange() {
+      let start = parseInt(document.getElementById('startRange').value);
+      let end = parseInt(document.getElementById('endRange').value);
+      
+      // Validasi input
+      if (isNaN(start) || start < 1) start = 1;
+      if (isNaN(end) || end > vocabList.length) end = vocabList.length;
+      if (start > end) {
+        // Tukar jika start lebih besar dari end
+        [start, end] = [end, start];
+      }
+      
+      // Update input fields dengan nilai yang valid
+      document.getElementById('startRange').value = start;
+      document.getElementById('endRange').value = end;
+      
+      // Indeks array dimulai dari 0, tetapi user input dimulai dari 1
+      filteredList = originalList.slice(start - 1, end);
+      renderTable(filteredList);
+      currentCardIndex = 0;
+      updateCardView();
+      resetQuiz();
+      
+      // Reset other modes
+      resetMultipleChoice();
+      resetWritingMode();
+      loadNewMatchingSet();
+      
+      alert(`Menampilkan kosakata nomor ${start} sampai ${end} (total: ${filteredList.length} kata)`);
+    }
+
+    function startTimer() {
+      clearInterval(interval);
+      interval = setInterval(() => {
+        seconds++;
+        const mins = String(Math.floor(seconds / 60)).padStart(2, '0');
+        const secs = String(seconds % 60).padStart(2, '0');
+        document.getElementById("timer").innerText = `${mins}:${secs}`;
+      }, 1000);
+    }
+
+    function renderTable(data) {
+      const table = document.getElementById("tableBody");
+      table.innerHTML = "";
+      meaningCells = [];
+      rowRefs = [];
+
+      data.forEach((row, index) => {
+        const tr = document.createElement("tr");
+        const tdNo = document.createElement("td");
+        tdNo.innerText = index + 1;
+
+        const tdHangeul = document.createElement("td");
+        tdHangeul.innerText = row[0];
+        tdHangeul.className = "hangeul";
+        tdHangeul.onclick = function() {
+          if (started) {
+            showMeaning(index);
+          }
+        };
+
+        const tdMeaning = document.createElement("td");
+        tdMeaning.innerText = row[1];
+        tdMeaning.classList.add("meaning");
+        if (started) {
+          tdMeaning.style.color = "transparent";
+        }
+
+        const tdMark = document.createElement("td");
+        const markBtn = document.createElement("button");
+        markBtn.className = "mark-btn";
+        markBtn.innerText = "✱";
+        markBtn.onclick = (e) => {
+          e.stopPropagation();
+          tr.classList.toggle("marked");
+          if (tr.classList.contains("marked")) {
+            markedRows.add(row);
+          } else {
+            markedRows.delete(row);
+          }
+        };
+        tdMark.appendChild(markBtn);
+
+        tr.appendChild(tdNo);
+        tr.appendChild(tdHangeul);
+        tr.appendChild(tdMeaning);
+        tr.appendChild(tdMark);
+
+        // Check if row is already marked
+        if (markedRows.has(row)) {
+          tr.classList.add("marked");
+        }
+
+        table.appendChild(tr);
+        meaningCells.push(tdMeaning);
+        rowRefs.push({ tr, tdMeaning });
+      });
+    }
+
+    function startQuiz() {
+      started = true;
+      renderTable(filteredList); // Re-render to hide meanings
+      seconds = 0;
+      showIndex = 0;
+      startTimer();
+      updateProgress();
+      document.getElementById("statusText").innerText = "Klik pada kata Korea untuk melihat artinya";
+      showFixedNav();
+    }
+
+    function showMeaning(index) {
+      if (!started) return;
+      meaningCells[index].style.color = "#000";
+      showIndex++;
+      updateProgress();
+    }
+
+    function showNextMeaning() {
+      if (!started || showIndex >= meaningCells.length) return;
+      
+      // Find the next meaning that's still hidden
+      for (let i = 0; i < meaningCells.length; i++) {
+        if (meaningCells[i].style.color === "transparent") {
+          meaningCells[i].style.color = "#000";
+          showIndex++;
+          updateProgress();
+          break;
+        }
+      }
+    }
+
+    function hidePreviousMeaning() {
+      if (!started || showIndex <= 0) return;
+      
+      // Find the last meaning that's visible, starting from the bottom
+      for (let i = meaningCells.length - 1; i >= 0; i--) {
+        if (meaningCells[i].style.color === "#000" || meaningCells[i].style.color === "rgb(0, 0, 0)") {
+          meaningCells[i].style.color = "transparent";
+          showIndex--;
+          updateProgress();
+          break;
+        }
+      }
+    }
+
+    function showFixedNav() {
+      if (document.getElementById('fixedNav')) return;
+      
+      const fixedNav = document.createElement('div');
+      fixedNav.id = 'fixedNav';
+      fixedNav.className = 'fixed-nav';
+      
+      const prevBtn = document.createElement('button');
+      prevBtn.className = 'button accent';
+      prevBtn.innerText = '← Sembunyikan';
+      prevBtn.onclick = hidePreviousMeaning;
+      
+      const nextBtn = document.createElement('button');
+      nextBtn.className = 'button secondary';
+      nextBtn.innerText = 'Tampilkan →';
+      nextBtn.onclick = showNextMeaning;
+      
+      fixedNav.appendChild(prevBtn);
+      fixedNav.appendChild(nextBtn);
+      document.body.appendChild(fixedNav);
+    }
+
+    function hideFixedNav() {
+      const fixedNav = document.getElementById('fixedNav');
+      if (fixedNav) {
+        fixedNav.remove();
+      }
+    }
+
+    function updateProgress() {
+      if (!started || meaningCells.length === 0) return;
+      const progress = (showIndex / meaningCells.length) * 100;
+      document.getElementById("progressBar").style.width = `${progress}%`;
+      document.getElementById("statusText").innerText = `Dipelajari ${showIndex} dari ${meaningCells.length} kata`;
+      
+      if (showIndex === meaningCells.length) {
+        clearInterval(interval);
+        document.getElementById("statusText").innerText = "Selesai! Semua kata telah dipelajari";
+      }
+    }
+
+    function shuffleTable() {
+      filteredList = [...filteredList].sort(() => Math.random() - 0.5);
+      renderTable(filteredList);
+      currentCardIndex = 0;
+      updateCardView();
+      resetQuiz();
+      
+      // Reset other modes
+      resetMultipleChoice();
+      resetWritingMode();
+      loadNewMatchingSet();
+      
+      alert("Kosakata telah diacak!");
+    }
+
+    function reviewMarked() {
+      if (markedRows.size === 0) {
+        alert("Tidak ada kata yang ditandai. Tandai kata-kata yang ingin Anda ulangi dengan mengklik tombol ✱.");
+        return;
+      }
+      
+      filteredList = [...markedRows].sort(() => Math.random() - 0.5);
+      renderTable(filteredList);
+      currentCardIndex = 0;
+      updateCardView();
+      resetQuiz();
+      
+      // Reset other modes
+      resetMultipleChoice();
+      resetWritingMode();
+      loadNewMatchingSet();
+      
+      alert(`Menampilkan ${filteredList.length} kata yang ditandai`);
+    }
+
+    function resetQuiz() {
+      started = false;
+      showIndex = 0;
+      clearInterval(interval);
+      seconds = 0;
+      document.getElementById("timer").innerText = "00:00";
+      document.getElementById("progressBar").style.width = "0%";
+      document.getElementById("statusText").innerText = "Siap untuk belajar";
+      hideFixedNav();
+    }
+
+    function searchVocab() {
+      const searchTerm = document.getElementById("searchInput").value.toLowerCase();
+      
+      if (searchTerm.trim() === "") {
+        filteredList = [...originalList];
+      } else {
+        filteredList = originalList.filter(item => 
+          item[0].toLowerCase().includes(searchTerm) || 
+          item[1].toLowerCase().includes(searchTerm)
+        );
+      }
+      
+      renderTable(filteredList);
+      currentCardIndex = 0;
+      updateCardView();
+      resetQuiz();
+      
+      // Reset other modes
+      resetMultipleChoice();
+      resetWritingMode();
+      loadNewMatchingSet();
+      
+      alert(`Ditemukan ${filteredList.length} kata yang sesuai dengan pencarian`);
+    }
+
+    // Card View Functions
+    function updateCardView() {
+      if (filteredList.length === 0) return;
+      
+      document.getElementById("cardFront").innerText = filteredList[currentCardIndex][0];
+      
+      // Only update the back content when the card is flipped or about to be flipped
+      if (cardFlipped) {
+        document.getElementById("cardBack").innerText = filteredList[currentCardIndex][1];
+      }
+      
+      document.getElementById("cardBack").style.opacity = cardFlipped ? "1" : "0";
+      document.getElementById("cardStatus").innerText = `Kartu ${currentCardIndex + 1} dari ${filteredList.length}`;
+      
+      // Update card mark button status
+      updateCardMarkButton();
+      
+      // Update progress bar
+      updateCardProgress();
+    }
+    
+    function updateCardProgress() {
+      const progress = ((currentCardIndex) / filteredList.length) * 100;
+      document.getElementById("cardProgressBar").style.width = `${progress}%`;
+    }
+    
+    // Function untuk memperbarui tampilan tombol tandai kartu
+    function updateCardMarkButton() {
+      const currentWord = filteredList[currentCardIndex];
+      const markBtn = document.getElementById("cardMarkBtn");
+      
+      if (markedRows.has(currentWord)) {
+        markBtn.classList.add("marked");
+      } else {
+        markBtn.classList.remove("marked");
+      }
+    }
+    
+    // Function untuk menandai atau membatalkan tanda pada kartu
+    function toggleCardMark() {
+      const currentWord = filteredList[currentCardIndex];
+      
+      if (markedRows.has(currentWord)) {
+        markedRows.delete(currentWord);
+      } else {
+        markedRows.add(currentWord);
+      }
+      
+      updateCardMarkButton();
+    }
+
+    function flipCard() {
+      // Set the back content right before flipping to avoid flashing the text
+      if (!cardFlipped) {
+        document.getElementById("cardBack").innerText = filteredList[currentCardIndex][1];
+      }
+      
+      cardFlipped = !cardFlipped;
+      document.getElementById("cardBack").style.opacity = cardFlipped ? "1" : "0";
+    }
+
+    function nextCard() {
+      if (currentCardIndex < filteredList.length - 1) {
+        currentCardIndex++;
+        cardFlipped = false;
+        // Clear the back content immediately when moving to previous card
+        document.getElementById("cardBack").innerText = "";
+        updateCardView();
+      }
+    }
+
+    function prevCard() {
+      if (currentCardIndex > 0) {
+        currentCardIndex--;
+        cardFlipped = false;
+        // Clear the back content immediately when moving to previous card
+        document.getElementById("cardBack").innerText = "";
+        updateCardView();
+      }
+    }
+function updateCardView() {
+  if (filteredList.length === 0) return;
+  
+  document.getElementById("cardFront").innerText = filteredList[currentCardIndex][0];
+  
+  // Only update the back content when the card is flipped or about to be flipped
+  if (cardFlipped) {
+    document.getElementById("cardBack").innerText = filteredList[currentCardIndex][1];
+  }
+  
+  document.getElementById("cardBack").style.opacity = cardFlipped ? "1" : "0";
+  document.getElementById("cardStatus").innerText = `Kartu ${currentCardIndex + 1} dari ${filteredList.length}`;
+  
+  // Update card mark button status
+  updateCardMarkButton();
+  
+  // Update progress bar
+  updateCardProgress();
+}
+
+function updateCardProgress() {
+  const progress = ((currentCardIndex) / filteredList.length) * 100;
+  document.getElementById("cardProgressBar").style.width = `${progress}%`;
+}
+
+// Function untuk memperbarui tampilan tombol tandai kartu
+function updateCardMarkButton() {
+  const currentWord = filteredList[currentCardIndex];
+  const markBtn = document.getElementById("cardMarkBtn");
+  
+  if (markedRows.has(currentWord)) {
+    markBtn.classList.add("marked");
+  } else {
+    markBtn.classList.remove("marked");
+  }
+}
+
+// Function untuk menandai atau membatalkan tanda pada kartu
+function toggleCardMark() {
+  const currentWord = filteredList[currentCardIndex];
+  
+  if (markedRows.has(currentWord)) {
+    markedRows.delete(currentWord);
+  } else {
+    markedRows.add(currentWord);
+  }
+  
+  updateCardMarkButton();
+}
+
+function flipCard() {
+  // Set the back content right before flipping to avoid flashing the text
+  if (!cardFlipped) {
+    document.getElementById("cardBack").innerText = filteredList[currentCardIndex][1];
+  }
+  
+  cardFlipped = !cardFlipped;
+  document.getElementById("cardBack").style.opacity = cardFlipped ? "1" : "0";
+}
+
+function nextCard() {
+  if (currentCardIndex < filteredList.length - 1) {
+    currentCardIndex++;
+    cardFlipped = false;
+    // Clear the back content immediately when moving to previous card
+    document.getElementById("cardBack").innerText = "";
+    updateCardView();
+  }
+}
+
+function prevCard() {
+  if (currentCardIndex > 0) {
+    currentCardIndex--;
+    cardFlipped = false;
+    // Clear the back content immediately when moving to previous card
+    document.getElementById("cardBack").innerText = "";
+    updateCardView();
+  }
+}
+
+function searchVocab() {
+  const searchTerm = document.getElementById("searchInput").value.toLowerCase();
+  
+  if (searchTerm.trim() === "") {
+    filteredList = [...originalList];
+  } else {
+    filteredList = originalList.filter(item => 
+      item[0].toLowerCase().includes(searchTerm) || 
+      item[1].toLowerCase().includes(searchTerm)
+    );
+  }
+  
+  renderTable(filteredList);
+  currentCardIndex = 0;
+  updateCardView();
+  resetQuiz();
+  
+      // Reset other modes
+      mcCurrentIndex = 0;
+      mcAnswered = false;
+      updateMultipleChoiceView();
+      
+      writingCurrentIndex = 0;
+      writingAnswered = false;
+      updateWritingView();
+      
+      // Reload matching set
+      loadNewMatchingSet();
+      
+      document.getElementById("statusText").innerText = 
+        filteredList.length > 0 ? 
+        `Ditemukan ${filteredList.length} kata` : 
+        "Tidak ada kata yang cocok";
+    }
+
+    // Initialize
+    renderTable(vocabList);
+    updateCardView();
+  
+function toggleRangeSelector() {
+  const selector = document.getElementById("rangeSelector");
+  const btn = document.getElementById("toggleRangeBtn");
+  const controls = document.querySelectorAll('.controls');
+  const backButtons = document.querySelectorAll('.back-button');
+
+  if (selector.style.display === "none") {
+    selector.style.display = "block";
+    btn.textContent = "Sembunyikan Rentang";
+
+    controls.forEach(el => el.style.display = "flex");
+    backButtons.forEach(el => el.style.display = "inline-block");
+  } else {
+    selector.style.display = "none";
+    btn.textContent = "Tampilkan Rentang";
+
+    controls.forEach(el => el.style.display = "none");
+    backButtons.forEach(el => el.style.display = "none");
+  }
+}
+
+</script>
+</body>
+</html>
